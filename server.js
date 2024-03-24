@@ -1,37 +1,44 @@
-require('dotenv').config();
+// server.js
 const express = require('express');
 const axios = require('axios');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
 const app = express();
+const port = 3000;
 
-app.use(express.json());
-app.use(express.static('public')); // Serve your frontend files
+app.use(bodyParser.json());
+app.use(express.static('public')); // Serve static files from 'public' directory
 
-app.post('/create-image', async (req, res) => {
-    const { apiKey, prompt } = req.body;
+app.post('/generate-image', async (req, res) => {
+    const { prompt } = req.body;
+    const apiKey = process.env.OPENAI_API_KEY; // Use your server-stored API key
 
     try {
         const response = await axios.post(
-            'https://api.openai.com/v3/dall-e-3/generations',
-            { prompt: prompt, n: 1 },
+            'https://api.openai.com/v1/images/generations',
+            {
+                prompt: prompt,
+                n: 1,
+                size: "1024x1024"
+            },
             {
                 headers: {
-                    'Authorization': `Bearer ${apiKey}`
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
                 }
             }
         );
 
-        // Assuming the API returns a URL to the image
-        const imageUrl = response.data.data[0].image_url;
-
-        // Redirect to the image URL or download it and send it as a file
-        res.redirect(imageUrl);
+        // Send the image URL or binary data back to the client
+        res.json({ imageUrl: response.data.data[0].url });
     } catch (error) {
-        console.error('Error creating image:', error);
-        res.status(500).send('Error creating image');
+        console.error('Error calling DALL·E 3 API:', error);
+        res.status(500).send('Failed to generate image');
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
 });
+
