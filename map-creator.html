@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/map-creator.html">Map Creator</a></li>
+                <li><a href="/campaign-creator.html">Campaign Creator</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <h1>Map Creator</h1>
+            <form id="imageForm">
+                <label for="apiKey">OpenAI API Key:</label>
+                <input type="password" id="apiKey" name="apiKey" required>
+                <label for="prompt">Prompt:</label>
+                <input type="text" id="prompt" name="prompt" required>
+                <button type="submit">Create Image</button>
+            </form>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- my_OpenAI_key: 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-->
