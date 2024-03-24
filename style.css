@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://github.com/madisoncarsan/DnD_Hub/blob/main/Images/Majestic%20Dragon%20Mountain.jpeg');
+    background-image: url('/Images/Majestic%20Dragon%20Mountain.jpeg');
     background-size: cover; /* Cover the entire page */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
