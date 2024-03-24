@@ -8,26 +8,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="map-creator.html">Map Creator</a></li>
-                <li><a href="campaign-creator.html">Campaign Creator</a></li>
-            </ul>
-        </nav>
-        
-        <main>
-            <h1>Map Creator</h1>
-            <form id="dalleForm">
-                <label for="apiKey">OpenAI API Key:</label>
-                <input type="password" id="apiKey" name="apiKey" required>
-                <label for="prompt">Prompt:</label>
-                <input type="text" id="prompt" name="prompt" required>
-                <button type="submit">Generate Image</button>
-            </form>
-        </main>
-    </div>
+    <!-- Nav Bar -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="map-creator.html">Map Creator</a></li>
+            <li><a href="campaign-creator.html">Campaign Creator</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Map Image Form -->
+    <main>
+        <h1>Map Creator</h1>
+        <form id="dalleForm">
+            <label for="apiKey">OpenAI API Key:</label>
+            <input type="password" id="apiKey" name="apiKey" required>
+            <label for="prompt">Prompt:</label>
+            <input type="text" id="prompt" name="prompt" required>
+            <button type="submit">Generate Image</button>
+        </form>
+    </main>
     <script src="dalle.js"></script>
 </body>
 </html>
